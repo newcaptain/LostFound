@@ -29,7 +29,6 @@
       :max-file-size="3145728"
       :multiple="true"
       :multiple-size="9"
-      compress="20"
       url="/api/uploadImg" >
     </vue-core-image-upload>
     <div class="previewImg">
@@ -120,10 +119,10 @@ export default {
         }
       })
     },
-    imageuploaded (res) {
+    imageuploaded(res) {
       this.showUpload = false
-      if (res.data.code === 0) {
-        this.picture = res.data.picture
+      if (res.code === 0) {
+        this.picture = res.picture;
       }
     },
     imageuploading () {
