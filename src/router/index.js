@@ -29,7 +29,7 @@ export default new Router({
       name: 'Detail',
       component: Detail
     }, {
-      path: '/home/user',
+      path: '/',
       name: 'User',
       component: User
     }, {

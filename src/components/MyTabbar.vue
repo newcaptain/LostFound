@@ -40,7 +40,7 @@ export default {
       this.index = 0
     } else if (this.$route.path === '/home/found') {
       this.index = 1
-    } else if (this.$route.path === '/home/user') {
+    } else if (this.$route.path === '/') {
       this.index = 2
     } else {
       this.index = Number(sessionStorage.getItem('index'))
@@ -53,7 +53,7 @@ export default {
         this.index = 0
       } else if (to.path === '/home/found') {
         this.index = 1
-      } else if (to.path === '/home/user') {
+      } else if (to.path === '/') {
         this.index = 2
       }
       sessionStorage.setItem('index', this.index)
@@ -66,8 +66,8 @@ export default {
         this.$router.push('/home/lost')
       } else if (val === 1 && this.$route.path !== '/home/found') {
         this.$router.push('/home/found')
-      } else if (val === 2 && this.$route.path !== '/home/user') {
-        this.$router.push('/home/user')
+      } else if (val === 2 && this.$route.path !== '/') {
+        this.$router.push('/')
       }
       sessionStorage.setItem('index', this.index)
     }

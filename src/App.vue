@@ -40,7 +40,7 @@ export default {
       if (this.$route.path === '/home/found') return '失物招领'
       if (this.$route.path.indexOf('/home/detail') !== -1) return '物品详情'
       if (this.$route.path.indexOf('/home/mypost') !== -1) return '我的发布'
-      if (this.$route.path === '/home/user') return '个人中心'
+      if (this.$route.path === '/') return '个人中心'
       if (this.$route.path.indexOf('/home/post') !== -1) return '发布信息'
     }
   },
