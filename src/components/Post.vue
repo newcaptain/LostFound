@@ -13,7 +13,7 @@
       <x-input title="物品:" placeholder="请输入物品名称" v-model="goodsName"></x-input>
       <datetime title="日期:&nbsp;&nbsp;&nbsp;&nbsp;" v-model="date" value-text-align="left" placeholder="您丢失或捡到物品的日期" format="YYYY-MM-DD"></datetime>
       <x-input title="地点:" placeholder="请输入丢失或捡到的地点" v-model="place"></x-input>
-      <x-input title="联系方式:" placeholder="请输入联系方式" v-model="phone"></x-input>
+      <x-input title="联系电话:" placeholder="请输入联系电话" v-model="phone"></x-input>
     </group>
     <group>
       <x-textarea title="描述:" v-model="description"></x-textarea>
@@ -44,7 +44,7 @@
     <loading :show="showUpload" text="正在上传"></loading>
 
     <!-- <div v-transfer-dom> -->
-    <toast v-model="showWarn" type="warn" width="9rem" :time="1200">表单内容不能有空</toast>
+    <toast v-model="showWarn" type="warn" width="9rem" :time="1200">{{warnMsg}}</toast>
     <toast v-model="showSuccess" type="success" width="9rem" :time="1800">提交成功</toast>
     <toast v-model="showCancel" type="cancel" width="9rem" :time="1800">提交失败<p>请联系工作人员</p></toast>
     <toast v-model="showErr" type="cancel" width="12rem" :time="1600">{{errMsg}}<p>请重试</p></toast>
@@ -79,6 +79,7 @@ export default {
       phone: '',
       description: '',
       picture: [],
+      warnMsg: '',
       showWarn: false,
       showLoading: false,
       showSuccess: false,
@@ -92,6 +93,18 @@ export default {
     formSubmit () {
       // 判空
       if (this.status.length === 0 || !this.goodsName || !this.date || !this.place || !this.phone || !this.description) {
+        this.warnMsg = '表单内容不能有空'
+        this.showWarn = true
+        return
+      }
+      // 表单验证
+      if (this.description.length > 50) {
+        this.warnMsg = '描述内容不能超过50个字'
+        this.showWarn = true
+        return
+      }
+      if (!(/^1[0-9]{10}$/.test(this.phone))) {
+        this.warnMsg = '请输入正确的手机号'
         this.showWarn = true
         return
       }
