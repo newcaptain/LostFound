@@ -19,7 +19,7 @@
             <p>物品: {{item.goods}}</p>
             <p>地点: {{item.place}}</p>
             <p>时间: {{item.lostTime}}</p>
-          </div>    
+          </div>
         </router-link>
       </li>
     </ul>

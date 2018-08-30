@@ -2,7 +2,7 @@
   <div>
     <group>
       <checklist
-        :options="[{key:'0',value:'我丢东西了'},{key:'1',value:'我捡到东西了'} ]"
+        :options="[{key:'1',value:'我捡到东西了'},{key:'2',value:'我丢东西了'} ]"
         :min="1"
         :max="1"
         v-model="status"
@@ -100,6 +100,16 @@ export default {
       // 表单验证
       if (this.description.length > 50) {
         this.warnMsg = '描述内容不能超过50个字'
+        this.showWarn = true
+        return
+      }
+      if (this.goodsName.length > 10) {
+        this.warnMsg = '物品名不能超过10个字'
+        this.showWarn = true
+        return
+      }
+      if (this.place > 10) {
+        this.warnMsg = '地点不能超过10个字'
         this.showWarn = true
         return
       }

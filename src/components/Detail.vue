@@ -1,8 +1,5 @@
 <template>
   <div class="container">
-    <div class="status">
-      {{item.status}}
-    </div>
     <div class="header">
       <img :src="item.avatar" class="avatar">
       <div class="user">{{item.name}} ({{item.yibanId}})</div>
@@ -32,7 +29,7 @@
     <div class="time">
       <small>{{item.postTime}} 发布</small>
     </div>
-    <loading :show="showLoading" ></loading>
+    <loading :show="showLoading"></loading>
   </div>
 </template>
 
@@ -89,6 +86,11 @@ export default {
         this.showLoading = false
         if (res.data.code === 0) {
           this.item = res.data.item
+          if (this.item.status === '寻物') {
+            this.$emit('changeHead', 0)
+          } else {
+            this.$emit('changeHead', 1)
+          }
         } else {
           alert('该记录不存在,请刷新重试')
         }
@@ -109,6 +111,7 @@ export default {
 }
 .header {
   display: flex;
+  padding-top: .8rem;
 }
 .avatar {
   border-radius: 50%;
@@ -151,7 +154,7 @@ export default {
   -webkit-box-flex: 1; -webkit-flex: 1; flex:1;
 }
 .time {
-  margin-top: .8rem;
+  margin-top: 1.8rem;
   text-align: center;
 }
 </style>
