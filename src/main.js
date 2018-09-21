@@ -1,4 +1,4 @@
-import './assets/iconfont/iconfont.js'
+// import './assets/iconfont/iconfont.js'
 import Vue from 'vue'
 import FastClick from 'fastclick'
 import App from './App'

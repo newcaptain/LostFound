@@ -11,14 +11,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/home/lost',
-      name: 'Lost',
-      component: Lost,
-      meta: {
-        keepAlive: true // true 表示需要使用缓存
-      }
-    }, {
-      path: '/home/found',
+      path: '/',
       name: 'Found',
       component: Found,
       meta: {
@@ -28,24 +21,6 @@ export default new Router({
       path: '/home/detail/:id',
       name: 'Detail',
       component: Detail
-    }, {
-      path: '/',
-      name: 'User',
-      component: User
-    }, {
-      path: '/home/mypost',
-      name: 'MyPost',
-      component: MyPost,
-      meta: {
-        keepAlive: true
-      }
-    }, {
-      path: '/home/post',
-      name: 'Post',
-      component: Post,
-      meta: {
-        keepAlive: true
-      }
     }
   ]
 })

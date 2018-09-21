@@ -4,11 +4,11 @@
       <x-header :title="thisTt" :left-options="leftOptions" slot="header" id="xheader"></x-header>
       
       <keep-alive>
-        <router-view v-if="$route.meta.keepAlive" @changeHead="changeH"></router-view>
+        <router-view></router-view>
       </keep-alive>
-      <router-view v-if="!$route.meta.keepAlive" @changeHead="changeH"></router-view>
+      <!-- <router-view v-if="!$route.meta.keepAlive"></router-view> -->
 
-      <my-tabbar slot="bottom"></my-tabbar>
+      <!-- <my-tabbar slot="bottom"></my-tabbar> -->
     </view-box>
   </div>
 </template>
@@ -20,8 +20,7 @@ export default {
   name: 'app',
   components: {
     ViewBox,
-    XHeader,
-    MyTabbar
+    XHeader
   },
   data: () => {
     return {
@@ -34,40 +33,19 @@ export default {
   },
   watch: {
     '$route' (to,from) {
-      // console.log("to:" + to.path)
-      // console.log("from: "+from.path)
-      if (to.path === '/home/lost') this.thisTt = '寻物启事'
-      if (to.path === '/home/found') this.thisTt = '失物招领'
-      if (to.path.indexOf('/home/detail') !== -1) this.thisTt = '寻物详情'
-      if (to.path.indexOf('/home/mypost') !== -1) this.thisTt = '我的发布'
-      if (to.path === '/') this.thisTt = '个人中心'
-      if (to.path.indexOf('/home/post') !== -1) this.thisTt = '发布信息'
+      if (to.path.indexOf('/home/detail') !== -1) this.thisTt = '招领详情'
+      if (to.path === '/') this.thisTt = '失物招领'
     }
-  },
-  methods: {
-    changeH: function(val) {
-      if (val === 0) {
-        this.thisTt = '寻物详情'
-      } else {
-        this.thisTt = '招领详情'
-      }
-    }
-
   },
   mounted: function() {
-    if (this.$route.path === '/home/lost') this.thisTt = '寻物启事'
-    if (this.$route.path === '/home/found') this.thisTt = '失物招领'
-    if (this.$route.path.indexOf('/home/detail') !== -1) this.thisTt = '寻物详情'
-    if (this.$route.path.indexOf('/home/mypost') !== -1) this.thisTt = '我的发布'
-    if (this.$route.path === '/') this.thisTt = '个人中心'
-    if (this.$route.path.indexOf('/home/post') !== -1) this.thisTt = '发布信息'
+    if (this.$route.path.indexOf('/home/detail') !== -1) this.thisTt = '招领详情'
+    if (this.$route.path === '/') this.thisTt = '失物招领'
   }
 }
 </script>
 
 <style lang="less">
 @import '~vux/src/styles/reset.less';
-
 
 body {
   background-color: #eee;
