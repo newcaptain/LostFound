@@ -3,12 +3,9 @@
     <ul>
       <li class="item" v-for="item of items" :key="item.id">
         <div class="header" >
-          <span class="status">{{item.status}}</span><span class="usrId">{{item.userId}}</span> 
+          <span class="status">{{item.status}}</span><span class="usrId">{{item.userId}}</span>
           <span class="postDate">
             {{item.postDate}}
-            <svg class="icon" aria-hidden="true" v-if="del" @click="confirmDel(item.id)">
-              <use xlink:href="#icon-chushaixuanxiang1"></use>
-            </svg>
           </span>
         </div>
         <router-link :to="'/home/detail/' + item.id" tag="div" class="content">
@@ -20,6 +17,18 @@
             <p>地点: {{item.place}}</p>
             <p>时间: {{item.lostTime}}</p>
           </div>
+          <div>
+            <div>
+              <svg class="icon" aria-hidden="true" v-if="del" @click.prevent="confirmFinish(item.id)">
+                <use xlink:href="#icon-wancheng"></use>
+              </svg>
+            </div>
+              <div>
+                <svg class="icon" aria-hidden="true" v-if="del" @click.prevent="confirmDelete(item.id)">
+                  <use xlink:href="#icon-chushaixuanxiang1"></use>
+                </svg>
+              </div>
+          </div>
         </router-link>
       </li>
     </ul>
@@ -27,11 +36,11 @@
       v-model="showConfirm"
       @on-confirm="onConfirm"
     >
-        <p style="text-align:center;">您确定要删除该记录吗？</p>
+      <p style="text-align:center;">{{confirmMsg}}</p>
     </confirm>
-    <loading :show="showLoading" text="正在删除"></loading>
-    <toast v-model="showSuccess" text="删除成功" type="success"></toast>
-    <toast v-model="showFailed" text="删除失败" type="cancel"></toast>
+    <loading :show="showLoading" text="正在操作"></loading>
+    <toast v-model="showSuccess" :text=successMsg type="success"></toast>
+    <toast v-model="showFailed" :text=failMsg type="cancel"></toast>
   </div>
 </template>
 
@@ -47,34 +56,68 @@ export default {
   },
   data () {
     return {
+      isFinish: true, 
       showConfirm: false,
-      deleteId: '',
+      opId: '',
       showLoading: false,
       showSuccess: false,
-      showFailed: false
+      showFailed: false,
+      confirmMsg: '',
+      successMsg: '',
+      failMsg: ''
     }
   },
   methods: {
-    confirmDel (_id) {
-      this.deleteId = _id
+    confirmDelete (_id) {
+      this.confirmMsg = '您确定要删除该记录吗？'
+      this.isFinish = false
+      this.opId = _id
+      this.showConfirm = true
+    },
+    confirmFinish (_id) {
+      this.confirmMsg = '您确定要更改该记录状态吗？'
+      this.isFinish = true
+      this.opId = _id
       this.showConfirm = true
     },
     onConfirm () {
       this.showLoading = true
-      this.$ajax.post('/api/deletePost', {
-        id: this.deleteId
-      })
-        .then((res) => {
-          this.showLoading = false
-          if (res.data.code === 0) {
-            this.showSuccess = true
-            setTimeout(() => {
-              window.location.reload()
-            }, 500)
-          } else {
-            this.showFailed = true
-          }
-        })
+      if (!this.isFinish) {
+        // 点击删除按钮， 执行删除操作
+        this.$ajax.post('/api/deletePost', {
+          id: this.opId
+        }).then((res) => {
+            this.showLoading = false
+            if (res.data.code === 0) {
+              this.successMsg = '删除成功'
+              this.showSuccess = true
+              setTimeout(() => {
+                window.location.reload()
+              }, 500)
+            } else {
+              this.failMsg = '删除失败'
+              this.showFailed = true
+            }
+          })
+      } else {
+        // 点击完成按钮， 执行完成操作
+        this.$ajax.post('/api/finishPost', {
+          id: this.opId
+        }).then((res) => {
+            this.showLoading = false
+            if (res.data.code === 0) {
+              this.successMsg = '操作成功'
+              this.showSuccess = true
+              setTimeout(() => {
+                window.location.reload()
+              }, 500)
+            } else {
+              this.failMsg = '操作失败'
+              this.showFailed = true
+            }
+          })
+      }
+      
     }
   }
 }
@@ -132,5 +175,11 @@ export default {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
+.finishBtn {
+  background: #1AAD19;
+  color: #fff;
+  border: none;
+  height: 1.5rem;
+  padding: 5px 5px 5px 5px;
+}
 </style>

@@ -74,7 +74,7 @@ html, body {
    fill: currentColor;
    overflow: hidden;
 }
-@media screen and (min-width: 785px) {
+@media screen and (min-width: 762px) {
   body {
     width: 43%;
     margin:0 auto;

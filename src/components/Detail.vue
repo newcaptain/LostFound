@@ -141,17 +141,17 @@ export default {
 .imgShow {
   width: 98%;
   margin: 0 auto;
-  display: flex;
-  flex-wrap:wrap;
+/*  display: flex;*/
+/*  flex-wrap:wrap;*/
   align-items:center;
 }
 .previewer-img {
-  width: 30%;
+  width: 32%;
   max-width: 32%;
   height: 8em;
   max-height: 8em;
   margin: 0.1rem;
-  -webkit-box-flex: 1; -webkit-flex: 1; flex:1;
+/*  -webkit-box-flex: 1; -webkit-flex: 1; flex:1;*/
 }
 .time {
   margin-top: 1.8rem;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <group>
+    <!-- <group>
       <checklist
         :options="[{key:'1',value:'我捡到东西了'},{key:'2',value:'我丢东西了'} ]"
         :min="1"
@@ -8,7 +8,7 @@
         v-model="status"
       >
       </checklist>
-    </group>
+    </group> -->
     <group>
       <x-input title="物品:" placeholder="请输入物品名称" v-model="goodsName"></x-input>
       <datetime title="日期:&nbsp;&nbsp;&nbsp;&nbsp;" v-model="date" value-text-align="left" placeholder="您丢失或捡到物品的日期" format="YYYY-MM-DD"></datetime>
@@ -59,7 +59,6 @@ import VueCoreImageUpload from 'vue-core-image-upload'
 export default {
   name: 'Post',
   components: {
-    Checklist,
     XInput,
     Group,
     Datetime,
@@ -72,7 +71,6 @@ export default {
   },
   data: function () {
     return {
-      status: [],
       goodsName: '',
       date: '',
       place: '',
@@ -92,7 +90,7 @@ export default {
   methods: {
     formSubmit () {
       // 判空
-      if (this.status.length === 0 || !this.goodsName || !this.date || !this.place || !this.phone || !this.description) {
+      if (!this.goodsName || !this.date || !this.place || !this.phone || !this.description) {
         this.warnMsg = '表单内容不能有空'
         this.showWarn = true
         return
@@ -122,7 +120,6 @@ export default {
       this.showLoading = true
       // 提交表单
       this.$ajax.post('/api/form', {
-        status: this.status[0],
         goodsName: this.goodsName,
         date: this.date,
         place: this.place,
