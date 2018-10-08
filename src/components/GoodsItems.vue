@@ -56,7 +56,7 @@ export default {
   },
   data () {
     return {
-      isFinish: true, 
+      isFinish: true,
       showConfirm: false,
       opId: '',
       showLoading: false,
@@ -87,37 +87,36 @@ export default {
         this.$ajax.post('/api/deletePost', {
           id: this.opId
         }).then((res) => {
-            this.showLoading = false
-            if (res.data.code === 0) {
-              this.successMsg = '删除成功'
-              this.showSuccess = true
-              setTimeout(() => {
-                window.location.reload()
-              }, 500)
-            } else {
-              this.failMsg = '删除失败'
-              this.showFailed = true
-            }
-          })
+          this.showLoading = false
+          if (res.data.code === 0) {
+            this.successMsg = '删除成功'
+            this.showSuccess = true
+            setTimeout(() => {
+              window.location.reload()
+            }, 500)
+          } else {
+            this.failMsg = '删除失败'
+            this.showFailed = true
+          }
+        })
       } else {
         // 点击完成按钮， 执行完成操作
         this.$ajax.post('/api/finishPost', {
           id: this.opId
         }).then((res) => {
-            this.showLoading = false
-            if (res.data.code === 0) {
-              this.successMsg = '操作成功'
-              this.showSuccess = true
-              setTimeout(() => {
-                window.location.reload()
-              }, 500)
-            } else {
-              this.failMsg = '操作失败'
-              this.showFailed = true
-            }
-          })
+          this.showLoading = false
+          if (res.data.code === 0) {
+            this.successMsg = '操作成功'
+            this.showSuccess = true
+            setTimeout(() => {
+              window.location.reload()
+            }, 500)
+          } else {
+            this.failMsg = '操作失败'
+            this.showFailed = true
+          }
+        })
       }
-      
     }
   }
 }

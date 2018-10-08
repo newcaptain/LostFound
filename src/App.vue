@@ -4,9 +4,9 @@
       <x-header :title="thisTt" :left-options="leftOptions" slot="header" id="xheader"></x-header>
       
       <keep-alive>
-        <router-view></router-view>
+        <router-view v-if="$route.meta.keepAlive"></router-view>
       </keep-alive>
-      <!-- <router-view v-if="!$route.meta.keepAlive"></router-view> -->
+      <router-view v-if="!$route.meta.keepAlive"></router-view>
 
       <!-- <my-tabbar slot="bottom"></my-tabbar> -->
     </view-box>
@@ -15,7 +15,7 @@
 
 <script>
 import { XHeader, ViewBox } from 'vux'
-import MyTabbar from './components/MyTabbar'
+// import MyTabbar from './components/MyTabbar'
 export default {
   name: 'app',
   components: {
@@ -28,16 +28,16 @@ export default {
       leftOptions: {
         backText: ''
       },
-      thisTt: ""
+      thisTt: ''
     }
   },
   watch: {
-    '$route' (to,from) {
+    '$route' (to, from) {
       if (to.path.indexOf('/home/detail') !== -1) this.thisTt = '招领详情'
       if (to.path === '/') this.thisTt = '失物招领'
     }
   },
-  mounted: function() {
+  mounted: function () {
     if (this.$route.path.indexOf('/home/detail') !== -1) this.thisTt = '招领详情'
     if (this.$route.path === '/') this.thisTt = '失物招领'
   }

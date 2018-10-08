@@ -7,7 +7,6 @@ import 'babel-polyfill'
 import axios from 'axios'
 Vue.prototype.$ajax = axios
 
-
 // import './assets/iconfont/iconfont.css'
 FastClick.attach(document.body)
 
