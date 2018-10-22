@@ -29,11 +29,11 @@ export default {
       leftOptions: {
         backText: ''
       },
-      thisTt: ""
+      thisTt: ''
     }
   },
   watch: {
-    '$route' (to,from) {
+    '$route' (to, from) {
       // console.log("to:" + to.path)
       // console.log("from: "+from.path)
       if (to.path === '/home/lost') this.thisTt = '寻物启事'
@@ -45,16 +45,15 @@ export default {
     }
   },
   methods: {
-    changeH: function(val) {
+    changeH: function (val) {
       if (val === 0) {
         this.thisTt = '寻物详情'
       } else {
         this.thisTt = '招领详情'
       }
     }
-
   },
-  mounted: function() {
+  mounted: function () {
     if (this.$route.path === '/home/lost') this.thisTt = '寻物启事'
     if (this.$route.path === '/home/found') this.thisTt = '失物招领'
     if (this.$route.path.indexOf('/home/detail') !== -1) this.thisTt = '寻物详情'

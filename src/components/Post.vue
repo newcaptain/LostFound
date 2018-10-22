@@ -142,10 +142,10 @@ export default {
         }
       })
     },
-    imageuploaded(res) {
+    imageuploaded (res) {
       this.showUpload = false
       if (res.code === 0) {
-        this.picture = res.picture;
+        this.picture = res.picture
       }
     },
     imageuploading () {
