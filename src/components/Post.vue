@@ -26,7 +26,7 @@
       @imageuploaded="imageuploaded"
       @imageuploading="imageuploading"
       @errorhandle="errorhandle"
-      :max-file-size="8388608"
+      :max-file-size="3145728"
       :multiple="true"
       :multiple-size="9"
       url="/api/uploadImg" >
@@ -155,7 +155,7 @@ export default {
       if (e === 'access_denied') {
         this.errMsg = '服务端拒绝访问'
       } else {
-        this.errMsg = '图片最大不能超过8MB'
+        this.errMsg = '图片最大不能超过3MB'
       }
       this.showErr = true
     }
