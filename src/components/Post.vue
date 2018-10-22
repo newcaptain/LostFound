@@ -98,7 +98,7 @@ export default {
         this.showWarn = true
         return
       }
-      if (this.place.length > 10) {
+      if (this.place > 10) {
         this.warnMsg = '地点不能超过10个字'
         this.showWarn = true
         return
