@@ -34,8 +34,6 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      // console.log("to:" + to.path)
-      // console.log("from: "+from.path)
       if (to.path === '/home/lost') this.thisTt = '寻物启事'
       if (to.path === '/home/found') this.thisTt = '失物招领'
       if (to.path.indexOf('/home/detail') !== -1) this.thisTt = '寻物详情'

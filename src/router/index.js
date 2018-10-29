@@ -33,12 +33,12 @@ export default new Router({
       name: 'User',
       component: User
     }, {
-      path: '/home/mypost',
+      path: '/home/mypost/:type',
       name: 'MyPost',
-      component: MyPost,
-      meta: {
-        keepAlive: true
-      }
+      component: MyPost
+      // meta: {
+      //   keepAlive: true
+      // }
     }, {
       path: '/home/post',
       name: 'Post',
