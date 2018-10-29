@@ -8,17 +8,17 @@
       <p><small>{{id}}</small></p>
     </div>
     <div class="btn">
-      <x-button :gradients="['#6F1BFE', '#9479DF']" :link="'/home/mypost/3'">
+      <x-button :gradients="['#6F1BFE', '#9479DF']" :link="'/home/mypost/lost'">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-wodefabu"></use>
         </svg>
-        我捡东西了
+        我丢东西了
       </x-button>
-      <x-button :gradients="['#FF5E3A', '#FF9500']" :link="'/home/mypost/4'">
+      <x-button :gradients="['#FF5E3A', '#FF9500']" :link="'/home/mypost/found'">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-fabu"></use>
         </svg>
-        我丢东西了
+        我捡东西了
       </x-button>
     </div>
     

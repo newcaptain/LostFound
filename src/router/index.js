@@ -5,7 +5,7 @@ import Found from '@/components/Found'
 import Detail from '@/components/Detail'
 import User from '@/components/User'
 import MyPost from '@/components/MyPost'
-import Post from '@/components/Post'
+// import Post from '@/components/Post'
 Vue.use(Router)
 
 export default new Router({
@@ -39,13 +39,14 @@ export default new Router({
       // meta: {
       //   keepAlive: true
       // }
-    }, {
-      path: '/home/post',
-      name: 'Post',
-      component: Post,
-      meta: {
-        keepAlive: true
-      }
     }
+    // , {
+    //   path: '/home/post',
+    //   name: 'Post',
+    //   component: Post,
+    //   meta: {
+    //     keepAlive: true
+    //   }
+    // }
   ]
 })

@@ -123,7 +123,7 @@ export default {
       this.showLoading = true
       // 提交表单
       this.$ajax.post('/api/form', {
-        status: this.type,
+        status: this.type === 'lost' ? 1 : 2,
         goodsName: this.goodsName,
         date: this.date,
         place: this.place,

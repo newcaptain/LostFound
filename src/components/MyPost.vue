@@ -37,7 +37,7 @@ export default {
     this.type = this.$route.params.type
     this.$ajax.get('/api/goodsItems', {
       params: {
-        type: this.type
+        type: this.type === 'lost' ? 3 : 4
         // num: 0,
         // search: ''
       }
