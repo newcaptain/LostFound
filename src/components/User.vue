@@ -16,10 +16,16 @@
       </x-button>
       <x-button :gradients="['#FF5E3A', '#FF9500']" :link="'/home/mypost/found'">
         <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-fabu"></use>
+          <use xlink:href="#icon-public"></use>
         </svg>
         我捡东西了
       </x-button>
+      <x-button :gradients="['#1D62F0', '#19D5FD']" @click.native="download">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-daochu"></use>
+        </svg>
+        导出信息
+      </x-button>      
     </div>
     
     <footer>
@@ -57,14 +63,21 @@ export default {
           this.showCancel = true
         }
       })
+  },
+  methods: {
+    download () {
+      window.location.href = '/api/export'
+    }
   }
 }
 </script>
 
 <style scoped>
+
 .btn {
   width: 96%;
   margin: 0 auto;
+  color:#fff;
 }
 .avatar>img {
   display: block;
@@ -82,4 +95,5 @@ footer {
   margin: 5rem 0 1rem 0;
   text-align: center;
 }
+
 </style>
