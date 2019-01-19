@@ -2,19 +2,19 @@
   <tabbar v-model="index">
     <tabbar-item>
       <svg class="icon" aria-hidden="true" slot="icon">
-    　　<use xlink:href="#icon-xunwuqishiweixuanzhong"></use>
+    　　<use xlink:href="#icon-chazhao_f"></use>
   　　</svg>
       <span slot="label">寻物启示</span>
     </tabbar-item>
     <tabbar-item>
       <svg class="icon" aria-hidden="true" slot="icon">
-    　　<use xlink:href="#icon-xingzhuang9kaobei"></use>
+    　　<use xlink:href="#icon-miaoshu"></use>
   　　</svg>
       <span slot="label">失物招领</span>
     </tabbar-item>
     <tabbar-item>
       <svg class="icon" aria-hidden="true" slot="icon">
-    　　<use xlink:href="#icon-jingjirenjinglikehuxianxingcopy"></use>
+    　　<use xlink:href="#icon-yonghu"></use>
   　　</svg>
       <span slot="label">个人中心</span>
     </tabbar-item>
@@ -77,13 +77,13 @@ export default {
 
 <style scoped>
 .icon {
-  width: 1em; height: 1em;
+  width: 1.35em; height: 1.3em;
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
 }
 .weui-tabbar__item {
-  font-size: 1.15em;
+  font-size: 1.3em;
 }
 
 </style>
