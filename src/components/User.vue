@@ -19,13 +19,7 @@
           <use xlink:href="#icon-public"></use>
         </svg>
         我捡东西了
-      </x-button>
-      <x-button :gradients="['#1D62F0', '#19D5FD']" @click.native="download">
-        <svg class="icon" aria-hidden="true">
-          <use xlink:href="#icon-daochu"></use>
-        </svg>
-        导出信息
-      </x-button>      
+      </x-button>     
     </div>
     
     <footer>
@@ -63,11 +57,6 @@ export default {
           this.showCancel = true
         }
       })
-  },
-  methods: {
-    download () {
-      window.location.href = '/api/export'
-    }
   }
 }
 </script>
